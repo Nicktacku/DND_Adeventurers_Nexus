@@ -18,11 +18,7 @@ const router = createBrowserRouter(
         loader={OptionsItemLoader}
       />
 
-      <Route
-        path="/:title"
-        element={<DetailsListPage />}
-        loader={({ params }) => DetailsLoader(params.title)}
-      />
+      <Route path="/:title" element={<DetailsListPage />} />
     </Route>
   )
 );

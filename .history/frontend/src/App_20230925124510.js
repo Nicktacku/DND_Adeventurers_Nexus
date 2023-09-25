@@ -1,12 +1,13 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { DetailsListPage, DetailsLoader } from "./pages/DetailsListPage";
+import DetailsListPage from "./pages/DetailsListPage";
 import { OptionsListPages, OptionsItemLoader } from "./pages/OptionsListPages";
 
 const router = createBrowserRouter(
@@ -18,11 +19,7 @@ const router = createBrowserRouter(
         loader={OptionsItemLoader}
       />
 
-      <Route
-        path="/:title"
-        element={<DetailsListPage />}
-        loader={({ params }) => DetailsLoader(params.title)}
-      />
+      <Route path="/:title" element={<DetailsListPage />} />
     </Route>
   )
 );

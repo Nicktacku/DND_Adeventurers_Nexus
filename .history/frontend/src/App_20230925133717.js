@@ -21,7 +21,7 @@ const router = createBrowserRouter(
       <Route
         path="/:title"
         element={<DetailsListPage />}
-        loader={({ params }) => DetailsLoader(params.title)}
+        loader={DetailsLoader}
       />
     </Route>
   )

@@ -1,28 +1,20 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { DetailsListPage, DetailsLoader } from "./pages/DetailsListPage";
+import DetailsListPage from "./pages/DetailsListPage";
 import { OptionsListPages, OptionsItemLoader } from "./pages/OptionsListPages";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route
-        path="/"
-        element={<OptionsListPages />}
-        loader={OptionsItemLoader}
-      />
-
-      <Route
-        path="/:title"
-        element={<DetailsListPage />}
-        loader={({ params }) => DetailsLoader(params.title)}
-      />
+    <Route path="/" element={<Outlet />}>
+      <Route index element={<OptionsListPages />} loader={OptionsItemLoader} />
+      <Route path=":title" element={<DetailsListPage />} />
     </Route>
   )
 );
@@ -30,7 +22,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <RouterProvider />
     </div>
   );
 }
